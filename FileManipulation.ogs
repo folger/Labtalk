@@ -1,0 +1,17 @@
+[WriteEmptyLine]
+	hfile=file.open(%YOriginC\Originlab\digitizer_utils.c, 1);
+	file.toEnd(hfile);
+	file.lwrite("", hfile);
+	file.close();
+
+[CheckFileExistence]
+	string strOCB32$ = "%(system.path.appdata$)OCTemp\ORIGINC\ORIGINLAB\digitizer_utils_32.ocb";
+	string strOCB64$ = "%(system.path.appdata$)OCTemp\ORIGINC\ORIGINLAB\digitizer_utils_64.ocb";
+
+	if ( exist(strOCB32$) >= 0 )
+	  del -f %(strOCB32$);
+	if ( exist(strOCB64$) >= 0 )
+	  del -f %(strOCB64$);
+
+
+

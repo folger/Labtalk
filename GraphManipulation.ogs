@@ -1,0 +1,24 @@
+[CreateGraphLayersAndRename]
+	repeat 10
+	{
+		layer -n;
+	}
+
+	doc -e LW
+	{
+		layer.name$="Folger";
+	}
+
+
+[CollectWindowLongName]
+	doc -e O
+	{
+	  if ( %[%H, 10] == "sparkline" )
+	    continue;
+
+	  if ( %(page.longname$) == "" )
+	    continue;
+
+	  ty "%H$ = %(QUOTE)%(page.longname$)%(QUOTE);";
+	}
+

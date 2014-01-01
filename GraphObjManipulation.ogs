@@ -1,0 +1,39 @@
+[GetLinkingGraphsLongName]
+	range rA = col(A);
+	range rB = col(B);
+
+	int nEnd = 0;
+	get rB -e nEnd;
+
+	for ( ii=1; ii<=nEnd; ii++ )
+	{
+	  string str = rB[ii]$;
+	  string str2 = %(str.Mid(9)$);
+	  
+	  win -o %(str2.GetToken(1)$)
+	  {
+	    rA[ii]$=page.longname$;
+	  }
+	}
+
+[BringAllOutOfPageGraphObjsToCenter]
+	doc -e G
+	{
+	     if ( (%[%B, 2] != "_") && (%B.left + %B.width < 0 || %B.left > page.width || %B.top + %B.height < 0 || %B.top > page.height) )
+	     {
+	          %B.left = page.width/2;
+	          %B.top = page.height/2;
+	     }
+	}
+
+[BatchChangeGraphObjText]
+	doc -e G
+	{
+	  string str = %B;
+	  if ( str.Left(4)$ == "Text" )
+	  {
+	  %A="$"; /// to avoid $ being substituted
+	  %B.Text$ = "(%A(x) * %A(y))";
+	  }
+	}
+
