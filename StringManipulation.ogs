@@ -1,0 +1,4 @@
+[GetFloatingGraphSourceGraphName]
+	%A=%[%(bmp.type$), >18];
+	ty %[%A, %[%A]];
+
